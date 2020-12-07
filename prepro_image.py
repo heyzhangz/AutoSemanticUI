@@ -48,8 +48,8 @@ def parse_Element(Elements, loc_list):
 def dye_image(loc_list, image_path, out_image_path, color_dict):
     img = Image.open(image_path)
     (img_row, img_col) = img.size
-    for row in img_row:
-        for col in img_col:
+    for row in range(img_row):
+        for col in range(img_col):
             img.putpixel((row, col), (255,255,255))
     for loc in loc_list:
         location = re.findall("\d+", loc)
