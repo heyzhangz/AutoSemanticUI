@@ -11,24 +11,30 @@ from Color import *
 from LablePkg import *
 
 
-def get_component_loc(layout_path):
-    loc_list = []
+def pre_img(base_dir, packagename, ui):
+    #loc_list = []
     try:
-        dom = xml.dom.minidom.parse(layout_path)
+        dom = xml.dom.minidom.parse(os.path.join(base_dir, packagename, ui, "layout.xml"))
     except Exception as e:
-        print(layout_path + ' error :' + str(e))
+        print(os.path.join(base_dir, packagename, ui, "layout.xml") + ' error :' + str(e))
         dom = None
     if dom == None:
-        return []
+        return
     root = dom.documentElement
     root = root.childNodes
     #root = del_toptar(root)
-    
+    img = Image.open(os.path.join(base_dir, packagename, ui, "screenshot.jpg"))
+    (img_row, img_col) = img.size
+    for row in range(img_row):
+        for col in range(img_col):
+            img.putpixel((row, col), (255,255,255))
     #IPython.embed()
-    parse_Element(root, loc_list)
-    return loc_list
+    parse_Element(root, img)
+    img = img.convert("RGB")
+    img.save(os.path.join(base_dir, packagename, ui, "screenshot_color.jpg"))
 
-def parse_Element(Elements, loc_list):
+
+def parse_Element(Elements, img):
     for node in Elements:
         if isinstance(node, xml.dom.minidom.Text):
             continue
@@ -36,21 +42,27 @@ def parse_Element(Elements, loc_list):
             if node.childNodes == []:
                 #只给textvivew和button染色
                 
-                #if node.getAttribute("class") == "android.widget.TextView" or node.getAttribute("class") == "android.widget.Button":
-                if node.getAttribute("package") != "com.android.systemui":
-                    loc_list.append(node.getAttribute("bounds") + str(class_id(node.getAttribute("bounds"))))
+                #if node.getAttribute("class") == "android.widget.TextView" or node.getAttribute("class") == "android.widget.Button" or node.getAttribute("class") == "android.widget.ImageView":
+                if node.getAttribute("package") != "com.android.systemui" and node.getAttribute("class") != "android.view.View" and "Layout" not in node.getAttribute("class"):
+                    dye_image(node.getAttribute("bounds"), random.randint(0,299), img)
             else:
-                parse_Element(node.childNodes, loc_list)
+                parse_Element(node.childNodes, img)
         else:
             print(type(node))
+"""
+def classify(node):
+    if node.getAttribute("class") == "android.widget.TextView":
+        return text_class(node)
+    
+    elif node.getAttribute("class") == "android.widget.ImageView":
+        return icon_class(node)
+    else:
+        return other_class(node)    
+"""  
 
-
+"""
 def dye_image(loc_list, image_path, out_image_path, color_dict):
-    img = Image.open(image_path)
-    (img_row, img_col) = img.size
-    for row in range(img_row):
-        for col in range(img_col):
-            img.putpixel((row, col), (255,255,255))
+    
     for loc in loc_list:
         location = re.findall("\d+", loc)
         for col in range(int(location[0]), int(location[2])):
@@ -59,8 +71,15 @@ def dye_image(loc_list, image_path, out_image_path, color_dict):
     
     img = img.convert("RGB")
     img.save(out_image_path)
-
-
+"""
+def dye_image(loc, class_id, img):
+    #print(str(class_id) + ':' + str(color.get_color(class_id)))
+    location = re.findall("\d+", loc)
+    for row in range(int(location[0]), int(location[2])):
+        for col in range(int(location[1]), int(location[3])):
+            img.putpixel((row, col), color.get_color(class_id))
+    
+    
 
 
 def class_id(loc):
@@ -71,15 +90,17 @@ def class_id(loc):
 if __name__ == '__main__':
     base_dir = os.path.dirname(os.path.abspath(__file__))
     color = Color_dict(base_dir)
+    
     log = LablePkg(base_dir)
+
     for packagename in os.listdir(base_dir):
         print(packagename)
         if os.path.isfile(packagename):
             continue
         for ui in os.listdir(os.path.join(base_dir, packagename)):
+            print(ui)
             if ui[:2] != 'ui':
                 continue
-            loc_list = get_component_loc(os.path.join(base_dir, packagename, ui, 'layout.xml'))
-            dye_image(loc_list, os.path.join(base_dir, packagename, ui, 'screenshot.jpg'), os.path.join(base_dir, packagename, ui, 'screenshot_color.jpg'), color)
+            pre_img(base_dir, packagename, ui)
+            #dye_image(loc_list, os.path.join(base_dir, packagename, ui, 'screenshot.jpg'), os.path.join(base_dir, packagename, ui, 'screenshot_color.jpg'), color)
         log.lable_pkg(packagename)
-    
