@@ -14,7 +14,7 @@ class Color_dict:
         self.B = list()
         self.load_color()
     
-    def init_dict(self, class_count=50):
+    def init_dict(self, class_count=500):
         self.add_color(class_count)
         
 
