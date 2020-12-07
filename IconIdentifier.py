@@ -2,6 +2,8 @@ import os
 import json
 import numpy as np
 import pickle
+import xml.dom.minidom
+import re
 
 from keras.models import load_model
 from keras.preprocessing.image import ImageDataGenerator
@@ -56,12 +58,12 @@ def isIcon(screenSize, grabbox):
 
     return False
 
-def grabImg(imgpath, grabbox):
+def grabImg(img, grabbox):
     """
         截取部分图片
     """
 
-    img = Image.open(imgpath)
+    #img = Image.open(imgpath)
     subImg = img.crop(grabbox)
 
     return subImg
@@ -69,7 +71,17 @@ def grabImg(imgpath, grabbox):
 def classifyIconFromNode(image, node, id : IconDetector):
 
     # TODO
-    pass
+    location = re.findall("\d+", node.getAttribute("bounds"))
+    grabbox = [int(location[0]), int(location[1]), int(location[2]), int(location[3])]
+    if isIcon(image.size, grabbox):
+        icon_img = grabImg(image, grabbox)
+        id.preprocess(icon_img)
+        return id.predict()
+    else:
+        return 100   #其他imageview时
+    
+    
+    #pass
 
 class IconDetector:
 
