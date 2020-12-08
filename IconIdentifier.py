@@ -12,14 +12,14 @@ from PIL import Image
 from AnomalyDetector import AnomalyDetector
 
 IMAGE_POSTFIX = (".png", ".jpg", ".jpeg")
-CURRENT_PATH_DIR = os.path.abspath(os.path.dirname(__file__))
-CURRENT_PATH = "/home/zhangz/Downloads/"
-MODEL_PATH = os.path.join(CURRENT_PATH, "icon_models", "small_cnn_weights_100_512.h5")
-ANOMALY_MODEL_PATH = os.path.join(CURRENT_PATH, "icon_models", "anomaly.pkl")
-ANOMALY_INV_MODEL_PATH = os.path.join(CURRENT_PATH, "icon_models", "inv_anomaly.pkl")
+CURRENT_PATH = os.path.abspath(os.path.dirname(__file__))
+# CURRENT_PATH = "/home/zhangz/Downloads/"
+MODEL_PATH = os.path.join(CURRENT_PATH, "models", "icon_models", "small_cnn_weights_100_512.h5")
+ANOMALY_MODEL_PATH = os.path.join(CURRENT_PATH, "models", "icon_models", "anomaly.pkl")
+ANOMALY_INV_MODEL_PATH = os.path.join(CURRENT_PATH, "models", "icon_models", "inv_anomaly.pkl")
 
-DATA_GEN_PATH = os.path.join(CURRENT_PATH, "icon_models", "datagen.pkl")
-CLASS_LIST = os.path.join(CURRENT_PATH_DIR, "config", "icon_class_list.json")
+DATA_GEN_PATH = os.path.join(CURRENT_PATH, "models", "icon_models", "datagen.pkl")
+CLASS_LIST = os.path.join(CURRENT_PATH, "config", "icon_class_list.json")
 INPUT_SIZE = 32
 
 def getInputFileList(inputpath):
@@ -70,18 +70,15 @@ def grabImg(img, grabbox):
 
 def classifyIconFromNode(image, node, id):
 
-    # TODO
     location = re.findall("\d+", node.getAttribute("bounds"))
     grabbox = [int(location[0]), int(location[1]), int(location[2]), int(location[3])]
+
     if isIcon(image.size, grabbox):
         icon_img = grabImg(image, grabbox)
         id.preprocess(icon_img)
         return id.predict()
     else:
         return 100   #其他imageview时
-    
-    
-    #pass
 
 class IconDetector:
 
@@ -95,6 +92,9 @@ class IconDetector:
 
         with open(DATA_GEN_PATH, 'rb') as dgfile:
             self.datagen = pickle.load(dgfile, encoding='latin1')
+            # self.datagen = ImageDataGenerator(
+            #     zca_whitening=True,
+            # )
         with open(CLASS_LIST, 'r') as clfile:
             self.classList = json.load(clfile)
         self.x = None
@@ -129,6 +129,8 @@ class IconDetector:
     def predict(self):
 
         x = self.datagen.flow(self.x, batch_size=1, shuffle=False).next()
+        # preImg = Image.fromarray(x.reshape(32, 32) * 255).convert('RGB')
+        # preImg.save("./n.png")
         prediction = self.model.predict(x)
 
         anomalies = np.zeros(1)
@@ -136,13 +138,19 @@ class IconDetector:
             anomalies = self.anomalyModel.predict(prediction)
 
         predictClass = np.argmax(prediction, axis=1)
-        return predictClass[0] if not anomalies[0] else 200
-        #return self.classList[predictClass[0]] if not anomalies[0] else 'anomaly'
+
+        if anomalies[0]:
+            print("[INFO] predict result : anomaly")
+            return 99 # 其它图标
+        else:
+            print("[INFO] predict result : " + self.classList[predictClass[0]])
+            return predictClass[0]
         
+        pass
 
 if __name__ == "__main__":
     # print(getInputFileList("./icons/cart_1.png"))
     id = IconDetector()
-    id.preprocessImgpath("./icons/anomaly_1.png")
+    id.preprocessImgpath("./icons/good_1.png")
     res = id.predict()
     print(res)

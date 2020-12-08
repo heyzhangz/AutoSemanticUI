@@ -6,6 +6,7 @@ import re
 from PIL import Image
 import numpy as np
 import random
+import copy
 from Color import *
 from LablePkg import *
 from IconIdentifier import *
@@ -24,7 +25,7 @@ def pre_img(base_dir, packagename, ui):
     root = root.childNodes
     #root = del_toptar(root)
     img = Image.open(os.path.join(base_dir, packagename, ui, "screenshot.jpg"))
-    img_Icon = img
+    img_Icon = copy.deepcopy(img)
     (img_row, img_col) = img.size
     for row in range(img_row):
         for col in range(img_col):
