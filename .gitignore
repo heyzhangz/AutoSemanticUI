@@ -138,3 +138,6 @@ autosema/
 samples/
 *_eva.py
 pkg_log.json
+
+# testcast
+testcase/
