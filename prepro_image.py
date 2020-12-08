@@ -10,7 +10,7 @@ import copy
 from Color import *
 from LablePkg import *
 from IconIdentifier import *
-
+import GenLableJson
 
 def pre_img(base_dir, packagename, ui):
     #loc_list = []
@@ -23,7 +23,6 @@ def pre_img(base_dir, packagename, ui):
         return
     root = dom.documentElement
     root = root.childNodes
-    #root = del_toptar(root)
     img = Image.open(os.path.join(base_dir, packagename, ui, "screenshot.jpg"))
     img_Icon = copy.deepcopy(img)
     (img_row, img_col) = img.size
@@ -31,37 +30,40 @@ def pre_img(base_dir, packagename, ui):
         for col in range(img_col):
             img.putpixel((row, col), (255,255,255))
     #IPython.embed()
-    parse_Element(root, img, img_Icon)
+    regions_list = []
+    parse_Element(root, img, img_Icon, regions_list)
     img = img.convert("RGB")
     img.save(os.path.join(base_dir, packagename, ui, "screenshot_color.jpg"))
+    GenLableJson.write_lablejson(packagename, ui, regions_list, lable_json)
 
-
-def parse_Element(Elements, img, img_Icon):
+def parse_Element(Elements, img, img_Icon, regions_list):
     for node in Elements:
         if isinstance(node, xml.dom.minidom.Text):
             continue
         elif isinstance(node, xml.dom.minidom.Element):
             if node.childNodes == []:
                 if node.getAttribute("package") != "com.android.systemui" and node.getAttribute("class") != "android.view.View" and "Layout" not in node.getAttribute("class"):
-                    dye_image(node.getAttribute("bounds"), classify(node, img_Icon), img)
+                    dye_image(node.getAttribute("bounds"), classify(node, img_Icon, regions_list), img)
             else:
-                parse_Element(node.childNodes, img, img_Icon)
+                parse_Element(node.childNodes, img, img_Icon, regions_list)
         else:
             print(type(node))
 
-def classify(node, img):
+
+def classify(node, img, regions_list):
     if node.getAttribute("class") == "android.widget.ImageView":
-        predict_class = classifyIconFromNode(img, node, id)
-        print(predict_class)
-        return predict_class
+        predict_class, descri = classifyIconFromNode(img, node, id)
     elif node.getAttribute("class") == "android.widget.TextView":
-        predict_class = classifyTextFromNode(node, id)
+        predict_class, descri = classifyTextFromNode(node, id)
     else:
-        return other_class(node)
+        predict_class, descri = other_class(node)
+    GenLableJson.get_regions_list(node.getAttribute("bounds"), predict_class, descri, regions_list)
+    return predict_class
 
 def other_class(node):
-    return 299    
+    return 299, "other"    
   
+
 
 def dye_image(loc, class_id, img):
     location = re.findall("\d+", loc)
@@ -76,11 +78,12 @@ def dye_image(loc, class_id, img):
 if __name__ == '__main__':
     base_dir = os.path.dirname(os.path.abspath(__file__))
     color = Color_dict(base_dir)
-    log = LablePkg(base_dir)
+    #log = LablePkg(base_dir)
     id = IconDetector()
+    lable_json = GenLableJson.lable_interface()
     for ui in os.listdir(os.path.join(base_dir, 'testcase/com.gome.eshopnew_202011301918')):
         print(ui)
         if ui[:2] != 'ui':
             continue
         pre_img(base_dir, 'testcase/com.gome.eshopnew_202011301918', ui)
-    log.lable_pkg(packagename)
+    #log.lable_pkg(packagename)

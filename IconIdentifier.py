@@ -79,18 +79,23 @@ def classifyIconFromNode(image, node, id):
     if isIcon(image.size, grabbox):
         icon_img = grabImg(image, grabbox)
         id.preprocess(icon_img)
-        return id.predict()
+        class_id = id.predict()
+        return class_id, "Icon_" + id.classList[class_id]
     else:
-        return 100   #其他imageview时
+        return 100, "Icon_default"   #其他imageview时
 
 def searchTextCategory(text, id):
     # 默认199是无法分类的TextView
     category_id = 199
+    name = "default"
     for t, i in id.text_id_map.items():
         # 字典中的某个词命中text，且是该text的主要组成部分(占字长度超过50%)
         if t in text and len(t) / len(text) >= 0.5:
             category_id = i
-    return category_id
+    for item in id.id_textclass.items():
+        if item[1] == category_id:
+            name = item[0]
+    return category_id, "Text_" + name
     
 def classifyTextFromNode(node, id):
     text = node.getAttribute("text")
@@ -118,11 +123,11 @@ class IconDetector:
         with open(TEXT_CLASS_LIST) as f:
             text_class = json.load(f)
         with open(ID_TEXTCLASS_LIST) as f:
-            id_textclass = json.load(f)
+            self.id_textclass = json.load(f)
         self.text_id_map = {}
         for k, v in text_class.items():
             for t in v:
-                self.text_id_map[t] = id_textclass[k]
+                self.text_id_map[t] = self.id_textclass[k]
 
         self.x = None
 
