@@ -20,6 +20,9 @@ ANOMALY_INV_MODEL_PATH = os.path.join(CURRENT_PATH, "models", "icon_models", "in
 
 DATA_GEN_PATH = os.path.join(CURRENT_PATH, "models", "icon_models", "datagen.pkl")
 CLASS_LIST = os.path.join(CURRENT_PATH, "config", "icon_class_list.json")
+
+TEXT_CLASS_LIST = os.path.join(CURRENT_PATH, "config", "text_class.json")
+ID_TEXTCLASS_LIST = os.path.join(CURRENT_PATH, "config", "id_textclass.json")
 INPUT_SIZE = 32
 
 def getInputFileList(inputpath):
@@ -80,6 +83,20 @@ def classifyIconFromNode(image, node, id):
     else:
         return 100   #其他imageview时
 
+def searchTextCategory(text, id):
+    # 默认199是无法分类的TextView
+    category_id = 199
+    for t, i in id.text_id_map.items():
+        # 字典中的某个词命中text，且是该text的主要组成部分(占字长度超过50%)
+        if t in text and len(t) / len(text) >= 0.5:
+            category_id = i
+    return category_id
+    
+def classifyTextFromNode(node, id):
+    text = node.getAttribute("text")
+    return searchTextCategory(text, id)
+    #pass
+
 class IconDetector:
 
     def __init__(self):
@@ -97,6 +114,16 @@ class IconDetector:
             # )
         with open(CLASS_LIST, 'r') as clfile:
             self.classList = json.load(clfile)
+
+        with open(TEXT_CLASS_LIST) as f:
+            text_class = json.load(f)
+        with open(ID_TEXTCLASS_LIST) as f:
+            id_textclass = json.load(f)
+        self.text_id_map = {}
+        for k, v in text_class.items():
+            for t in v:
+                self.text_id_map[t] = id_textclass[k]
+
         self.x = None
 
         pass

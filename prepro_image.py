@@ -54,6 +54,8 @@ def classify(node, img):
         predict_class = classifyIconFromNode(img, node, id)
         print(predict_class)
         return predict_class
+    elif node.getAttribute("class") == "android.widget.TextView":
+        predict_class = classifyTextFromNode(node, id)
     else:
         return other_class(node)
 
@@ -76,13 +78,9 @@ if __name__ == '__main__':
     color = Color_dict(base_dir)
     log = LablePkg(base_dir)
     id = IconDetector()
-    for packagename in os.listdir(base_dir):
-        print(packagename)
-        if os.path.isfile(packagename):
+    for ui in os.listdir(os.path.join(base_dir, 'testcase/com.gome.eshopnew_202011301918')):
+        print(ui)
+        if ui[:2] != 'ui':
             continue
-        for ui in os.listdir(os.path.join(base_dir, packagename)):
-            print(ui)
-            if ui[:2] != 'ui':
-                continue
-            pre_img(base_dir, packagename, ui)
-        log.lable_pkg(packagename)
+        pre_img(base_dir, 'testcase/com.gome.eshopnew_202011301918', ui)
+    log.lable_pkg(packagename)
