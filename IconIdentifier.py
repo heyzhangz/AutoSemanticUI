@@ -12,13 +12,14 @@ from PIL import Image
 from AnomalyDetector import AnomalyDetector
 
 IMAGE_POSTFIX = (".png", ".jpg", ".jpeg")
-CURRENT_PATH = os.path.abspath(os.path.dirname(__file__))
-MODEL_PATH = os.path.join(CURRENT_PATH, "models", "icon_models", "small_cnn_weights_100_512.h5")
-ANOMALY_MODEL_PATH = os.path.join(CURRENT_PATH, "models", "icon_models", "anomaly.pkl")
-ANOMALY_INV_MODEL_PATH = os.path.join(CURRENT_PATH, "models", "icon_models", "inv_anomaly.pkl")
+CURRENT_PATH_DIR = os.path.abspath(os.path.dirname(__file__))
+CURRENT_PATH = "/home/zhangz/Downloads/"
+MODEL_PATH = os.path.join(CURRENT_PATH, "icon_models", "small_cnn_weights_100_512.h5")
+ANOMALY_MODEL_PATH = os.path.join(CURRENT_PATH, "icon_models", "anomaly.pkl")
+ANOMALY_INV_MODEL_PATH = os.path.join(CURRENT_PATH, "icon_models", "inv_anomaly.pkl")
 
-DATA_GEN_PATH = os.path.join(CURRENT_PATH, "models", "icon_models", "datagen.pkl")
-CLASS_LIST = os.path.join(CURRENT_PATH, "config", "icon_class_list.json")
+DATA_GEN_PATH = os.path.join(CURRENT_PATH, "icon_models", "datagen.pkl")
+CLASS_LIST = os.path.join(CURRENT_PATH_DIR, "config", "icon_class_list.json")
 INPUT_SIZE = 32
 
 def getInputFileList(inputpath):
@@ -46,11 +47,11 @@ def isIcon(screenSize, grabbox):
         判断是否是图标
     """
     allPixel = screenSize[0] * screenSize[1]
-    boxWidth = grabbox[3] - grabbox[1]
-    boxLength = grabbox[2] - grabbox[0]
+    boxLength = grabbox[3] - grabbox[1]
+    boxWidth = grabbox[2] - grabbox[0]
     boxPixel = boxWidth * boxLength
     
-    aspectRatio = boxLength / boxWidth if boxLength < boxWidth else boxWidth / boxLength
+    aspectRatio = boxWidth / boxLength if boxWidth < boxLength else boxLength / boxWidth
     areaRatio = boxPixel / allPixel
 
     if aspectRatio > 0.75 and areaRatio <= 0.05:
@@ -65,10 +66,9 @@ def grabImg(img, grabbox):
 
     #img = Image.open(imgpath)
     subImg = img.crop(grabbox)
-
     return subImg
 
-def classifyIconFromNode(image, node, id : IconDetector):
+def classifyIconFromNode(image, node, id):
 
     # TODO
     location = re.findall("\d+", node.getAttribute("bounds"))
@@ -136,7 +136,8 @@ class IconDetector:
             anomalies = self.anomalyModel.predict(prediction)
 
         predictClass = np.argmax(prediction, axis=1)
-        return self.classList[predictClass[0]] if not anomalies[0] else 'anomaly'
+        return predictClass[0] if not anomalies[0] else 200
+        #return self.classList[predictClass[0]] if not anomalies[0] else 'anomaly'
         
 
 if __name__ == "__main__":

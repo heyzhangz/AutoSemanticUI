@@ -3,13 +3,12 @@ import sys
 import xml.dom.minidom
 import json
 import re
-import IPython
 from PIL import Image
 import numpy as np
 import random
 from Color import *
 from LablePkg import *
-from IConIdentifier import *
+from IconIdentifier import *
 
 
 def pre_img(base_dir, packagename, ui):
@@ -25,35 +24,37 @@ def pre_img(base_dir, packagename, ui):
     root = root.childNodes
     #root = del_toptar(root)
     img = Image.open(os.path.join(base_dir, packagename, ui, "screenshot.jpg"))
+    img_Icon = img
     (img_row, img_col) = img.size
     for row in range(img_row):
         for col in range(img_col):
             img.putpixel((row, col), (255,255,255))
     #IPython.embed()
-    parse_Element(root, img)
+    parse_Element(root, img, img_Icon)
     img = img.convert("RGB")
     img.save(os.path.join(base_dir, packagename, ui, "screenshot_color.jpg"))
 
 
-def parse_Element(Elements, img):
+def parse_Element(Elements, img, img_Icon):
     for node in Elements:
         if isinstance(node, xml.dom.minidom.Text):
             continue
         elif isinstance(node, xml.dom.minidom.Element):
             if node.childNodes == []:
                 if node.getAttribute("package") != "com.android.systemui" and node.getAttribute("class") != "android.view.View" and "Layout" not in node.getAttribute("class"):
-                    icon_img = img
-                    dye_image(node.getAttribute("bounds"), classify(node, icon_img), img)
+                    dye_image(node.getAttribute("bounds"), classify(node, img_Icon), img)
             else:
-                parse_Element(node.childNodes, img)
+                parse_Element(node.childNodes, img, img_Icon)
         else:
             print(type(node))
 
 def classify(node, img):
-    if node.getAttribute("class") == "android.widget.TextView":
-        return id.classifyIconFromNode(img, node)
-    #elif node.getAttribute("class") == "android.widget.ImageView":
-    pass
+    if node.getAttribute("class") == "android.widget.ImageView":
+        predict_class = classifyIconFromNode(img, node, id)
+        print(predict_class)
+        return predict_class
+    else:
+        return other_class(node)
 
 def other_class(node):
     return 299    

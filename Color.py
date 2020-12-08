@@ -1,7 +1,6 @@
 import random
 import os
 import json
-import IPython
 
 class Color_dict:
 
