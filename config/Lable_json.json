@@ -1,7 +1,7 @@
 {
     "testcase/com.gome.eshopnew_202011301918ui_61_1606735370700.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_61_1606735370700/screenshot_color.jpg",
-        "size": 97359,
+        "size": 98365,
         "regions": [
             {
                 "shape_attributes": {
@@ -237,7 +237,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -357,7 +357,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -381,7 +381,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_after_sale",
-                    "class": "104",
+                    "class": "204",
                     "image_quality": {
                         "frontal": true
                     }
@@ -405,7 +405,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_after_sale",
-                    "class": "104",
+                    "class": "204",
                     "image_quality": {
                         "frontal": true
                     }
@@ -477,7 +477,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -765,7 +765,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -980,8 +980,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_avatar",
+                    "class": "49",
                     "image_quality": {
                         "frontal": true
                     }
@@ -1076,8 +1076,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_videocam",
+                    "class": "56",
                     "image_quality": {
                         "frontal": true
                     }
@@ -1125,7 +1125,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -1172,8 +1172,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_more",
+                    "class": "26",
                     "image_quality": {
                         "frontal": true
                     }
@@ -1293,7 +1293,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_after_sale",
-                    "class": "104",
+                    "class": "204",
                     "image_quality": {
                         "frontal": true
                     }
@@ -1316,8 +1316,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_location",
+                    "class": "40",
                     "image_quality": {
                         "frontal": true
                     }
@@ -1389,7 +1389,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -1437,7 +1437,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -1460,8 +1460,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_lock",
-                    "class": "2",
+                    "name": "Icon_anomoly",
+                    "class": "99",
                     "image_quality": {
                         "frontal": true
                     }
@@ -1485,7 +1485,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -1508,8 +1508,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_chat",
-                    "class": "28",
+                    "name": "Icon_anomoly",
+                    "class": "99",
                     "image_quality": {
                         "frontal": true
                     }
@@ -1533,7 +1533,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -1580,8 +1580,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_gift",
+                    "class": "60",
                     "image_quality": {
                         "frontal": true
                     }
@@ -2899,7 +2899,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_51_1606735348189.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_51_1606735348189/screenshot_color.jpg",
-        "size": 88472,
+        "size": 88531,
         "regions": [
             {
                 "shape_attributes": {
@@ -2967,7 +2967,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_detail",
-                    "class": "112",
+                    "class": "212",
                     "image_quality": {
                         "frontal": true
                     }
@@ -2991,7 +2991,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_after_sale",
-                    "class": "104",
+                    "class": "204",
                     "image_quality": {
                         "frontal": true
                     }
@@ -3231,7 +3231,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -3471,7 +3471,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_share",
-                    "class": "110",
+                    "class": "210",
                     "image_quality": {
                         "frontal": true
                     }
@@ -3807,7 +3807,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -3999,7 +3999,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -4047,7 +4047,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -4108,7 +4108,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_62_1606735373073.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_62_1606735373073/screenshot_color.jpg",
-        "size": 74826,
+        "size": 74139,
         "regions": [
             {
                 "shape_attributes": {
@@ -4128,7 +4128,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -4152,7 +4152,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -4176,7 +4176,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -4200,7 +4200,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -4272,7 +4272,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -4296,7 +4296,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_after_sale",
-                    "class": "104",
+                    "class": "204",
                     "image_quality": {
                         "frontal": true
                     }
@@ -4344,7 +4344,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_cancel",
-                    "class": "109",
+                    "class": "209",
                     "image_quality": {
                         "frontal": true
                     }
@@ -4391,8 +4391,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_gift",
-                    "class": "60",
+                    "name": "Icon_anomoly",
+                    "class": "99",
                     "image_quality": {
                         "frontal": true
                     }
@@ -4464,7 +4464,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_like",
-                    "class": "111",
+                    "class": "211",
                     "image_quality": {
                         "frontal": true
                     }
@@ -4693,7 +4693,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_59_1606735366157.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_59_1606735366157/screenshot_color.jpg",
-        "size": 61173,
+        "size": 61116,
         "regions": [
             {
                 "shape_attributes": {
@@ -4809,7 +4809,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_ship",
-                    "class": "115",
+                    "class": "215",
                     "image_quality": {
                         "frontal": true
                     }
@@ -4905,7 +4905,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -5000,8 +5000,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_avatar",
+                    "class": "49",
                     "image_quality": {
                         "frontal": true
                     }
@@ -5254,7 +5254,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_57_1606735361225.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_57_1606735361225/screenshot_color.jpg",
-        "size": 96536,
+        "size": 97509,
         "regions": [
             {
                 "shape_attributes": {
@@ -5393,8 +5393,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_avatar",
+                    "class": "49",
                     "image_quality": {
                         "frontal": true
                     }
@@ -5585,8 +5585,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_wallpaper",
+                    "class": "82",
                     "image_quality": {
                         "frontal": true
                     }
@@ -5777,8 +5777,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_follow",
-                    "class": "3",
+                    "name": "Icon_anomoly",
+                    "class": "99",
                     "image_quality": {
                         "frontal": true
                     }
@@ -6426,7 +6426,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_like",
-                    "class": "111",
+                    "class": "211",
                     "image_quality": {
                         "frontal": true
                     }
@@ -6714,7 +6714,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_product_display",
-                    "class": "101",
+                    "class": "201",
                     "image_quality": {
                         "frontal": true
                     }
@@ -7015,7 +7015,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_50_1606735346026.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_50_1606735346026/screenshot_color.jpg",
-        "size": 60867,
+        "size": 60941,
         "regions": [
             {
                 "shape_attributes": {
@@ -7131,7 +7131,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_product_display",
-                    "class": "101",
+                    "class": "201",
                     "image_quality": {
                         "frontal": true
                     }
@@ -7203,7 +7203,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_product_display",
-                    "class": "101",
+                    "class": "201",
                     "image_quality": {
                         "frontal": true
                     }
@@ -7360,7 +7360,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_60_1606735368264.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_60_1606735368264/screenshot_color.jpg",
-        "size": 97193,
+        "size": 96272,
         "regions": [
             {
                 "shape_attributes": {
@@ -7379,8 +7379,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_avatar",
+                    "class": "49",
                     "image_quality": {
                         "frontal": true
                     }
@@ -7596,7 +7596,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -7716,7 +7716,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -7740,7 +7740,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_after_sale",
-                    "class": "104",
+                    "class": "204",
                     "image_quality": {
                         "frontal": true
                     }
@@ -7764,7 +7764,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_after_sale",
-                    "class": "104",
+                    "class": "204",
                     "image_quality": {
                         "frontal": true
                     }
@@ -7836,7 +7836,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -8148,7 +8148,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -8315,8 +8315,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_emoji",
+                    "class": "27",
                     "image_quality": {
                         "frontal": true
                     }
@@ -8363,8 +8363,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_avatar",
+                    "class": "49",
                     "image_quality": {
                         "frontal": true
                     }
@@ -8508,7 +8508,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -8555,8 +8555,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_more",
+                    "class": "26",
                     "image_quality": {
                         "frontal": true
                     }
@@ -8676,7 +8676,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_after_sale",
-                    "class": "104",
+                    "class": "204",
                     "image_quality": {
                         "frontal": true
                     }
@@ -8699,8 +8699,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_location",
+                    "class": "40",
                     "image_quality": {
                         "frontal": true
                     }
@@ -8772,7 +8772,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -8795,8 +8795,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_edit",
+                    "class": "73",
                     "image_quality": {
                         "frontal": true
                     }
@@ -8820,7 +8820,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -8868,7 +8868,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -8916,7 +8916,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -9145,7 +9145,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_49_1606735343837.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_49_1606735343837/screenshot_color.jpg",
-        "size": 75585,
+        "size": 75632,
         "regions": [
             {
                 "shape_attributes": {
@@ -9165,7 +9165,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -9597,7 +9597,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -9621,7 +9621,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -9861,7 +9861,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_ship",
-                    "class": "115",
+                    "class": "215",
                     "image_quality": {
                         "frontal": true
                     }
@@ -9994,7 +9994,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_2_1606735148164.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_2_1606735148164/screenshot_color.jpg",
-        "size": 97182,
+        "size": 96262,
         "regions": [
             {
                 "shape_attributes": {
@@ -10013,8 +10013,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_avatar",
+                    "class": "49",
                     "image_quality": {
                         "frontal": true
                     }
@@ -10230,7 +10230,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -10350,7 +10350,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -10374,7 +10374,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_after_sale",
-                    "class": "104",
+                    "class": "204",
                     "image_quality": {
                         "frontal": true
                     }
@@ -10398,7 +10398,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_after_sale",
-                    "class": "104",
+                    "class": "204",
                     "image_quality": {
                         "frontal": true
                     }
@@ -10470,7 +10470,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -10758,7 +10758,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -11118,7 +11118,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -11286,7 +11286,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_after_sale",
-                    "class": "104",
+                    "class": "204",
                     "image_quality": {
                         "frontal": true
                     }
@@ -11309,8 +11309,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_refresh",
+                    "class": "64",
                     "image_quality": {
                         "frontal": true
                     }
@@ -11382,7 +11382,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -11430,7 +11430,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -11478,7 +11478,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -11526,7 +11526,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -11573,8 +11573,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_gift",
+                    "class": "60",
                     "image_quality": {
                         "frontal": true
                     }
@@ -11755,7 +11755,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_45_1606735334749.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_45_1606735334749/screenshot_color.jpg",
-        "size": 75585,
+        "size": 75632,
         "regions": [
             {
                 "shape_attributes": {
@@ -11775,7 +11775,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -12207,7 +12207,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -12231,7 +12231,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -12471,7 +12471,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_ship",
-                    "class": "115",
+                    "class": "215",
                     "image_quality": {
                         "frontal": true
                     }
@@ -12604,7 +12604,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_40_1606735323807.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_40_1606735323807/screenshot_color.jpg",
-        "size": 85280,
+        "size": 85140,
         "regions": [
             {
                 "shape_attributes": {
@@ -12672,7 +12672,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_detail",
-                    "class": "112",
+                    "class": "212",
                     "image_quality": {
                         "frontal": true
                     }
@@ -12696,7 +12696,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_after_sale",
-                    "class": "104",
+                    "class": "204",
                     "image_quality": {
                         "frontal": true
                     }
@@ -12912,7 +12912,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -13152,7 +13152,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_share",
-                    "class": "110",
+                    "class": "210",
                     "image_quality": {
                         "frontal": true
                     }
@@ -13488,7 +13488,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -13680,7 +13680,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -13728,7 +13728,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -13789,7 +13789,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_56_1606735359017.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_56_1606735359017/screenshot_color.jpg",
-        "size": 97959,
+        "size": 97890,
         "regions": [
             {
                 "shape_attributes": {
@@ -13809,7 +13809,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -14841,7 +14841,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -14854,7 +14854,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_54_1606735354609.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_54_1606735354609/screenshot_color.jpg",
-        "size": 59791,
+        "size": 59856,
         "regions": [
             {
                 "shape_attributes": {
@@ -14970,7 +14970,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_product_display",
-                    "class": "101",
+                    "class": "201",
                     "image_quality": {
                         "frontal": true
                     }
@@ -15018,7 +15018,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_product_display",
-                    "class": "101",
+                    "class": "201",
                     "image_quality": {
                         "frontal": true
                     }
@@ -15175,7 +15175,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_52_1606735350482.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_52_1606735350482/screenshot_color.jpg",
-        "size": 97829,
+        "size": 98224,
         "regions": [
             {
                 "shape_attributes": {
@@ -15195,7 +15195,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -15386,8 +15386,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_delete",
+                    "class": "46",
                     "image_quality": {
                         "frontal": true
                     }
@@ -16227,7 +16227,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -16240,7 +16240,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_47_1606735339261.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_47_1606735339261/screenshot_color.jpg",
-        "size": 75585,
+        "size": 75632,
         "regions": [
             {
                 "shape_attributes": {
@@ -16260,7 +16260,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -16692,7 +16692,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -16716,7 +16716,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -16956,7 +16956,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_ship",
-                    "class": "115",
+                    "class": "215",
                     "image_quality": {
                         "frontal": true
                     }
@@ -17089,7 +17089,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_58_1606735363753.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_58_1606735363753/screenshot_color.jpg",
-        "size": 104156,
+        "size": 105451,
         "regions": [
             {
                 "shape_attributes": {
@@ -17300,8 +17300,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_cart",
+                    "class": "61",
                     "image_quality": {
                         "frontal": true
                     }
@@ -17348,8 +17348,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_more",
+                    "class": "26",
                     "image_quality": {
                         "frontal": true
                     }
@@ -18068,8 +18068,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_minus",
+                    "class": "4",
                     "image_quality": {
                         "frontal": true
                     }
@@ -18116,8 +18116,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_add",
+                    "class": "1",
                     "image_quality": {
                         "frontal": true
                     }
@@ -18285,7 +18285,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_like",
-                    "class": "111",
+                    "class": "211",
                     "image_quality": {
                         "frontal": true
                     }
@@ -18573,7 +18573,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_product_display",
-                    "class": "101",
+                    "class": "201",
                     "image_quality": {
                         "frontal": true
                     }
@@ -18882,7 +18882,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_41_1606735326044.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_41_1606735326044/screenshot_color.jpg",
-        "size": 88291,
+        "size": 88265,
         "regions": [
             {
                 "shape_attributes": {
@@ -18950,7 +18950,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_detail",
-                    "class": "112",
+                    "class": "212",
                     "image_quality": {
                         "frontal": true
                     }
@@ -18974,7 +18974,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_after_sale",
-                    "class": "104",
+                    "class": "204",
                     "image_quality": {
                         "frontal": true
                     }
@@ -19190,7 +19190,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -19430,7 +19430,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_share",
-                    "class": "110",
+                    "class": "210",
                     "image_quality": {
                         "frontal": true
                     }
@@ -19766,7 +19766,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -19958,7 +19958,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -20006,7 +20006,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_merchant",
-                    "class": "103",
+                    "class": "203",
                     "image_quality": {
                         "frontal": true
                     }
@@ -20067,7 +20067,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_37_1606735316744.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_37_1606735316744/screenshot_color.jpg",
-        "size": 92464,
+        "size": 91511,
         "regions": [
             {
                 "shape_attributes": {
@@ -20087,7 +20087,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_buy",
-                    "class": "100",
+                    "class": "200",
                     "image_quality": {
                         "frontal": true
                     }
@@ -20470,8 +20470,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_star",
-                    "class": "44",
+                    "name": "Icon_anomoly",
+                    "class": "99",
                     "image_quality": {
                         "frontal": true
                     }
@@ -20806,8 +20806,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_delete",
-                    "class": "46",
+                    "name": "Icon_anomoly",
+                    "class": "99",
                     "image_quality": {
                         "frontal": true
                     }
@@ -21166,8 +21166,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_swap",
-                    "class": "74",
+                    "name": "Icon_anomoly",
+                    "class": "99",
                     "image_quality": {
                         "frontal": true
                     }
@@ -21239,7 +21239,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_mine",
-                    "class": "113",
+                    "class": "213",
                     "image_quality": {
                         "frontal": true
                     }
@@ -21260,7 +21260,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_42_1606735328258.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_42_1606735328258/screenshot_color.jpg",
-        "size": 60978,
+        "size": 61074,
         "regions": [
             {
                 "shape_attributes": {
@@ -21376,7 +21376,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_product_display",
-                    "class": "101",
+                    "class": "201",
                     "image_quality": {
                         "frontal": true
                     }
@@ -21448,7 +21448,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_product_display",
-                    "class": "101",
+                    "class": "201",
                     "image_quality": {
                         "frontal": true
                     }
@@ -21605,7 +21605,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_7_1606735236817.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_7_1606735236817/screenshot_color.jpg",
-        "size": 86344,
+        "size": 86449,
         "regions": [
             {
                 "shape_attributes": {
@@ -21816,8 +21816,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_anomoly",
-                    "class": "99",
+                    "name": "Icon_date_range",
+                    "class": "11",
                     "image_quality": {
                         "frontal": true
                     }
@@ -22033,7 +22033,7 @@
                 },
                 "region_attributes": {
                     "name": "Text_product_category",
-                    "class": "102",
+                    "class": "202",
                     "image_quality": {
                         "frontal": true
                     }
@@ -22896,8 +22896,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_follow",
-                    "class": "3",
+                    "name": "Icon_anomoly",
+                    "class": "99",
                     "image_quality": {
                         "frontal": true
                     }
@@ -22944,8 +22944,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_date_range",
-                    "class": "11",
+                    "name": "Icon_anomoly",
+                    "class": "99",
                     "image_quality": {
                         "frontal": true
                     }
@@ -23110,7 +23110,7 @@
     },
     "testcase/com.gome.eshopnew_202011301918ui_35_1606735312140.jpg": {
         "filename": "testcase/com.gome.eshopnew_202011301918/ui_35_1606735312140/screenshot_color.jpg",
-        "size": 52100,
+        "size": 51279,
         "regions": [
             {
                 "shape_attributes": {
@@ -23273,8 +23273,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_cart",
-                    "class": "61",
+                    "name": "Icon_anomoly",
+                    "class": "99",
                     "image_quality": {
                         "frontal": true
                     }
@@ -23441,8 +23441,8 @@
                     ]
                 },
                 "region_attributes": {
-                    "name": "Icon_wallpaper",
-                    "class": "82",
+                    "name": "Icon_anomoly",
+                    "class": "99",
                     "image_quality": {
                         "frontal": true
                     }
