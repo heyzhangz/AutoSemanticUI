@@ -4,6 +4,7 @@ import numpy as np
 import pickle
 import xml.dom.minidom
 import re
+import time
 
 from keras.models import load_model
 from keras.preprocessing.image import ImageDataGenerator
@@ -68,7 +69,7 @@ def grabImg(img, grabbox):
     subImg = img.crop(grabbox)
     return subImg
 
-def classifyIconFromNode(image, node, id):
+def classifyIconFromNode(image, node, id, savepath=None, filename=None):
 
     location = re.findall("\d+", node.getAttribute("bounds"))
     grabbox = [int(location[0]), int(location[1]), int(location[2]), int(location[3])]
@@ -76,7 +77,16 @@ def classifyIconFromNode(image, node, id):
     if isIcon(image.size, grabbox):
         icon_img = grabImg(image, grabbox)
         id.preprocess(icon_img)
-        return id.predict()
+        result = id.predict()
+
+        if savepath is not None and filename is not None:
+            classRes = id.classList[result]
+            savepath = os.path.join(savepath, "%d_%s" % (result, classRes))
+            if not os.path.exists(savepath):
+                os.makedirs(savepath)
+            icon_img.save(os.path.join(savepath, "%s%f.png") % (filename, time.time()))
+
+        return result
     else:
         return 100   #其他imageview时
 
