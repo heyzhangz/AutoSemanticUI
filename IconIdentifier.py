@@ -4,7 +4,6 @@ import numpy as np
 import pickle
 import xml.dom.minidom
 import re
-import time
 
 from keras.models import load_model
 from keras.preprocessing.image import ImageDataGenerator
@@ -72,30 +71,23 @@ def grabImg(img, grabbox):
     subImg = img.crop(grabbox)
     return subImg
 
-def classifyIconFromNode(image, node, id, savepath=None, filename=None):
-
+def classifyIconFromNode(image, node, id):
     location = re.findall("\d+", node.getAttribute("bounds"))
+    #location = [0,255,0,255]
     grabbox = [int(location[0]), int(location[1]), int(location[2]), int(location[3])]
+
 
     if isIcon(image.size, grabbox):
         icon_img = grabImg(image, grabbox)
         id.preprocess(icon_img)
         class_id = id.predict()
-        classRes = id.classList[class_id]
-
-        if savepath is not None and filename is not None:
-            savepath = os.path.join(savepath, "%d_%s" % (class_id, classRes))
-            if not os.path.exists(savepath):
-                os.makedirs(savepath)
-            icon_img.save(os.path.join(savepath, "%s%f.png") % (filename, time.time()))
-
-        return class_id, classRes
+        return class_id, "Icon_" + id.classList[class_id]
     else:
         return 100, "Icon_default"   #其他imageview时
 
 def searchTextCategory(text, id):
-    # 默认199是无法分类的TextView
-    category_id = 199
+    # 默认499是无法分类的TextView
+    category_id = 499
     name = "default"
     for t, i in id.text_id_map.items():
         # 字典中的某个词命中text，且是该text的主要组成部分(占字长度超过50%)
@@ -139,7 +131,7 @@ class IconDetector:
                 self.text_id_map[t] = self.id_textclass[k]
 
         self.x = None
-
+ 
         pass
 
     def preprocessImgpath(self, imgpath):
@@ -173,7 +165,6 @@ class IconDetector:
         # preImg = Image.fromarray(x.reshape(32, 32) * 255).convert('RGB')
         # preImg.save("./n.png")
         prediction = self.model.predict(x)
-
         anomalies = np.zeros(1)
         if self.anomalyModel:
             anomalies = self.anomalyModel.predict(prediction)
