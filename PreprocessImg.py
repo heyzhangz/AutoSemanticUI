@@ -18,7 +18,7 @@ import GenLableJson
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 LABLE_FILE = "Lable_json.json"
-DATASET = 'uisemantic_new'
+DATASET = 'testcase'
 LAYOUT = 'layout.xml'
 IMG = 'screenshot.jpg'
 OUT_IMG = 'screenshot_color.jpg'
@@ -39,21 +39,18 @@ def get_test_path():
 
 
 
+
 def package_path():
     package_list = []
-    assert os.path.exists(DATASET_PATH), 'no such dir or file: ' + DATASET_PATH
-    for package in os.listdir(DATASET_PATH):
-        if package != 'test':
-            continue
-        package_name = package.split('_20')[0]
-        package_path = os.path.join(DATASET_PATH, package)
-        if os.path.isfile(package_path):
-            continue
-        for ui in os.listdir(package_path):
-            if ui[:2] == 'ui': #LABLE_FILE not in os.listdir(os.path.join(package_path, ui)):
-                ui_path = os.path.join(package, ui)
-                package_list.append({'package_name': package_name, 'ui_path':ui_path})
+    for root, dir, files in os.walk(DATASET_PATH):
+        if 'ui_' in root:
+            ui_path = root.split(DATASET_PATH+'/')[1]
+            package_name = ui_path.split('ui_')[0].split('_20')[0]
+            package_list.append({'package_name': package_name, 'ui_path':ui_path})
+    print(package_list)
     return package_list
+    
+        
 
 
 
@@ -91,7 +88,7 @@ class ProIMG():
             print("[DOING]: " + task['ui_path'])
             regions_list = []
             self.process_main(task['ui_path'], task['package_name'], regions_list)
-            #GenLableJson.write_lablejson(task['ui_path'], regions_list)
+            GenLableJson.write_lablejson(task['ui_path'], regions_list)
                 
                 
 
@@ -272,7 +269,7 @@ if __name__ == '__main__':
         color = Color_dict()
         p = ProIMG('pro_'+str(pro_id), package_list[pro_id*task_count: (pro_id+1)*task_count], id, color) if pro_id != process_count-1 else ProIMG('pro_'+str(pro_id), package_list[pro_id*task_count:], id, color)
         p.run()
-    
+
     
 
 
