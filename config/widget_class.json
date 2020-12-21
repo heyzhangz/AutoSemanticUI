@@ -1,0 +1,21 @@
+{
+    "100" : ["Image", "ImageView", "ImageButton", "GlyphView", "AppCompactButton", "AppCompactImageButton", "ActionMenuItemView", "ActionMenuItemPresenter"],
+    "200" : ["AdView", "HtmlBannerWebView", "AdContainer"],
+    "220" : ["BottomTabGroupView", "BottomBar"],
+    "230" : ["ButtonBar"],
+    "240" : ["CardView"],
+    "250" : ["CheckBox", "CheckedTextView"],
+    "260" : ["DataPicker"],
+    "270" : ["EditText", "SearchBoxView", "TextView", "AppCompatAutoCompleteTextView"],
+    "280" : ["ListView", "RecyclerView", "ListPopUpWindow", "TabItem", "GridView"],
+    "290" : ["MapView"],
+    "300" : ["SlidingTab"],
+    "310" : ["NumberPicker"],
+    "320" : ["Switch"],
+    "330" : ["ViewPagerIndicatorDots", "PageIndicator", "CircleIndicator", "PagerIndicator"],
+    "340" : ["SeekBar"],
+    "350" : ["Button"],
+    "360" : ["ToolBar", "TitleBar", "ActionBar"],
+    "370" : ["VideoView", "VideoTextureView"],
+    "380" : ["WebView"]
+}

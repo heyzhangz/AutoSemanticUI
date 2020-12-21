@@ -26,6 +26,8 @@ RAN_IMG = 'screenshot_random.jpg'
 ONE_IMG = 'screenshot_one.jpg'
 DATASET_PATH = os.path.join(BASE_DIR, DATASET)
 
+# TODO
+testallwidget = {}
 
 def get_test_path():
     test_path = []
@@ -44,9 +46,15 @@ def package_path():
     package_list = []
     for root, dir, files in os.walk(DATASET_PATH):
         if 'ui_' in root:
-            ui_path = root.split(DATASET_PATH+'/')[1]
-            package_name = ui_path.split('ui_')[0].split('_20')[0]
+
+            ui_basename = os.path.basename(root)
+            ui_dirname = os.path.dirname(root)
+            ui_basedirname = os.path.basename(ui_dirname)
+            ui_path = os.path.join(ui_basedirname, ui_basename)
+
+            package_name = ui_basedirname.split('_')[0]
             package_list.append({'package_name': package_name, 'ui_path':ui_path})
+
     print(package_list)
     return package_list
     
@@ -112,7 +120,7 @@ class ProIMG():
             #color_3 = [[255,0,0], [0,255,0], [0,0,255]]
             #self.dye_color(tuple(color_3[class_id]), white_img, node.getAttribute("bounds"))
             self.dye_color(self.color.get_color(class_id), white_img, node.getAttribute("bounds"))
-            #GenLableJson.get_regions_list(node.getAttribute("bounds"), class_id, descri, regions_list)
+            GenLableJson.get_regions_list(node.getAttribute("bounds"), class_id, descri, regions_list)
         out_img = Image.fromarray(white_img)
         out_img = out_img.convert("RGB")
         out_img.save(os.path.join(DATASET_PATH, ui_path, OUT_IMG))
@@ -151,6 +159,7 @@ class ProIMG():
 
 
     def classify_3(self, node, img):
+        # TODO 不适用了
         if node.getAttribute("class") == "android.widget.ImageView" or node.getAttribute("class") ==  "android.widget.Image":
             predict_class, descri = 0, 'image'
         elif re.match(r'.*Text.*', node.getAttribute("class"), re.I):
@@ -162,52 +171,29 @@ class ProIMG():
 
 
     def classify(self, node, img):
-        #img = Image.fromarray(img)
-        predict_class = 499
-        if node.getAttribute("text"):
+
+        predict_class = 499 # 默认other类
+        node_class = node.getAttribute("class")
+        node_text = node.getAttribute("text")
+
+        # 1. 文字处理 不管控件类别, 直接读text属性 400~450
+        if node_text:
             predict_class, descri = classifyTextFromNode(node, self.id)
-        if predict_class != 499:
-            return predict_class, descri                                          #先读取文字进程分类
-        if node.getAttribute("class") == "android.widget.ImageView" or node.getAttribute("class") ==  "android.widget.Image":
-            predict_class, descri = classifyIconFromNode(img, node, self.id) #图标颜色的取值范围为0-100
-        elif node.getAttribute("class") == "android.widget.RadioGroup":           #其他组件200-300
-            predict_class, descri = 200, 'RadioGroup'
-        elif re.match(r'.*Clock$', node.getAttribute("class"), re.I):
-            predict_class, descri = 210, 'Clock'
-        elif re.match(r'.*Button$', node.getAttribute("class"), re.I):
-            predict_class, descri = 220, 'Button'
-        elif re.match(r'.*Bar$', node.getAttribute("class"), re.I):
-            predict_class, descri = 230, 'Bar'
-        elif re.match(r'.*WebView$', node.getAttribute("class"), re.I):
-            predict_class, descri = 240, 'WebView'
-        elif re.match(r'.*Tab$', node.getAttribute("class"), re.I):
-            predict_class, descri = 250, 'Tab'
-        elif re.match(r'.*RecyclerView$', node.getAttribute("class"), re.I):
-            predict_class, descri = 260, 'RecyclerView'
-        elif re.match(r'.*Checkbox$', node.getAttribute("class"), re.I):
-            predict_class, descri = 270, 'Checkbox'
-        elif re.match(r'.*ViewPager$', node.getAttribute("class"), re.I):
-            predict_class, descri = 280, 'ViewPager'
-        elif re.match(r'.*ScrollView$', node.getAttribute("class"), re.I):
-            predict_class, descri = 290, 'ScrollView'
-        elif re.match(r'.*ListView$', node.getAttribute("class"), re.I):
-            predict_class, descri = 300, 'ListView'
-        elif node.getAttribute("class") == "android.widget.EditText":
-            predict_class, descri = 390, 'EditText'   
-        elif re.match(r'.*Text.*', node.getAttribute("class"), re.I):
-            predict_class, descri = classifyTextFromNode(node, self.id)   #文字组件400-500
+        # 2. 图片处理 只处理图片相关控件 class:100 image_default 图片类控件  0~100
+        elif True in [node_class.endswith(keyword) for keyword in id.widgetClassList["100"]]:
+            predict_class, descri = classifyIconFromNode(img, node, self.id)
+        # 3. 控件处理 处理功能性控件 200~380 499
         else:
-            predict_class, descri = self.classifyOther()    #其他组件暂时只返回一个颜色350， 后面可用范围为111-399
+            predict_class, descri = classifyWidgetFromNode(node, self.id)
+
+        if node_class in testallwidget:
+            testallwidget[node_class].add(descri)
+        else:
+            testallwidget[node_class] = set()
+            testallwidget[node_class].add(descri)
+
         return predict_class, descri
      
-
-        
-
-
-    def classifyOther(self):
-        return 350, 'other'
-        pass
-
 
     def dye_color(self, colorr, white_img, bounds):
         location = re.findall("\d+", bounds)
@@ -269,16 +255,9 @@ if __name__ == '__main__':
         color = Color_dict()
         p = ProIMG('pro_'+str(pro_id), package_list[pro_id*task_count: (pro_id+1)*task_count], id, color) if pro_id != process_count-1 else ProIMG('pro_'+str(pro_id), package_list[pro_id*task_count:], id, color)
         p.run()
-
     
+    for k, v in testallwidget.items():
+        testallwidget[k] = list(v)
 
-
-
-    
-
-    
-    
-    
-
-
-            
+    with open("./c.json", "w") as f:
+        json.dump(testallwidget, f, indent=4)

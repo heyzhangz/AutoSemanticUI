@@ -19,10 +19,9 @@ ANOMALY_MODEL_PATH = os.path.join(CURRENT_PATH, "models", "icon_models", "anomal
 ANOMALY_INV_MODEL_PATH = os.path.join(CURRENT_PATH, "models", "icon_models", "inv_anomaly.pkl")
 
 DATA_GEN_PATH = os.path.join(CURRENT_PATH, "models", "icon_models", "datagen.pkl")
-CLASS_LIST = os.path.join(CURRENT_PATH, "config", "icon_class_list.json")
-
+CLASS_LIST = os.path.join(CURRENT_PATH, "config", "id_class.json")
 TEXT_CLASS_LIST = os.path.join(CURRENT_PATH, "config", "text_class.json")
-ID_TEXTCLASS_LIST = os.path.join(CURRENT_PATH, "config", "id_textclass.json")
+WIDGET_CLASS_LIST= os.path.join(CURRENT_PATH, "config", "widget_class.json")
 INPUT_SIZE = 32
 
 def getInputFileList(inputpath):
@@ -76,32 +75,50 @@ def classifyIconFromNode(image, node, id):
     #location = [0,255,0,255]
     grabbox = [int(location[0]), int(location[1]), int(location[2]), int(location[3])]
 
-
+    class_id = 100 # class : 100非图标, 图片型控件
     if isIcon(image.size, grabbox):
         icon_img = grabImg(image, grabbox)
         id.preprocess(icon_img)
         class_id = id.predict()
-        return class_id, "Icon_" + id.classList[class_id]
-    else:
-        return 100, "Icon_default"   #其他imageview时
+
+    return class_id, id.classList[str(class_id)]
+
+def classifyWidgetFromNode(node, id):
+
+    class_id = "499" # default id
+    node_class = node.getAttribute("class")
+
+    # 判断原生类别
+    for keyid, widgetlist in id.widgetClassList.items():
+        # 图片判断过了, 跳过
+        if keyid == "100":
+            continue
+        if True in [node_class.endswith(keyword) for keyword in widgetlist]:
+            class_id = keyid
+            return class_id, id.classList[class_id]
+
+    # 可能是第三方类别, 专门判断一下
+    if re.match(r".*text.*view.*", node_class, re.I):
+        class_id = "270" # widget_input
+    elif re.match(r".*webview.*", node_class, re.I):
+        class_id = "380" # widget_webview
+
+    return class_id, id.classList[class_id]
+
 
 def searchTextCategory(text, id):
-    # 默认499是无法分类的TextView
-    category_id = 499
-    name = "default"
-    for t, i in id.text_id_map.items():
+    # 450 text_default 暂未分类的text
+    category_id = "450"
+    for keyword, classid in id.text_id_map.items():
         # 字典中的某个词命中text，且是该text的主要组成部分(占字长度超过50%)
-        if t in text and len(t) / len(text) >= 0.5:
-            category_id = i
-    for item in id.id_textclass.items():
-        if item[1] == category_id:
-            name = item[0]
-    return category_id, "Text_" + name
+        if keyword in text and len(keyword) / len(text) >= 0.5:
+            category_id = classid
+            
+    return category_id, id.classList[category_id]
     
 def classifyTextFromNode(node, id):
     text = node.getAttribute("text")
     return searchTextCategory(text, id)
-    #pass
 
 class IconDetector:
 
@@ -123,12 +140,14 @@ class IconDetector:
 
         with open(TEXT_CLASS_LIST) as f:
             text_class = json.load(f)
-        with open(ID_TEXTCLASS_LIST) as f:
-            self.id_textclass = json.load(f)
+
         self.text_id_map = {}
         for k, v in text_class.items():
             for t in v:
-                self.text_id_map[t] = self.id_textclass[k]
+                self.text_id_map[t] = k
+        
+        with open(WIDGET_CLASS_LIST) as f:
+            self.widgetClassList = json.load(f)
 
         self.x = None
  
@@ -175,7 +194,7 @@ class IconDetector:
             print("[INFO] predict result : anomaly")
             return 99 # 其它图标
         else:
-            print("[INFO] predict result : " + self.classList[predictClass[0]])
+            print("[INFO] predict result : " + self.classList[str(predictClass[0])])
             return predictClass[0]
         
         pass
