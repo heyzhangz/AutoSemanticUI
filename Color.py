@@ -27,6 +27,7 @@ class Color_dict:
         self.class_count = len(self.color_list)
     
     def get_color(self, class_id):
+        class_id = int(class_id)
         if class_id < 0:
             return ()
         if class_id > self.class_count:
