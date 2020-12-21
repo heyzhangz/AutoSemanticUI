@@ -26,8 +26,7 @@ RAN_IMG = 'screenshot_random.jpg'
 ONE_IMG = 'screenshot_one.jpg'
 DATASET_PATH = os.path.join(BASE_DIR, DATASET)
 
-# TODO
-testallwidget = {}
+# testallwidget = {}
 
 def get_test_path():
     test_path = []
@@ -37,17 +36,11 @@ def get_test_path():
                 test_path.append(os.path.join(root, file))
     return test_path
 
-
-
-
-
-
 def package_path():
     package_list = []
     for root, dir, files in os.walk(DATASET_PATH):
-        if 'ui_' in root:
-
-            ui_basename = os.path.basename(root)
+        ui_basename = os.path.basename(root)
+        if re.match(r"ui_\d+_\d+", ui_basename):
             ui_dirname = os.path.dirname(root)
             ui_basedirname = os.path.basename(ui_dirname)
             ui_path = os.path.join(ui_basedirname, ui_basename)
@@ -57,10 +50,6 @@ def package_path():
 
     print(package_list)
     return package_list
-    
-        
-
-
 
 def get_class_num():
     class_dict = dict()
@@ -74,12 +63,6 @@ def get_class_num():
     
     with open(os.path.join(DATASET_PATH), 'w', encoding='utf-8') as f:
         json.dump(class_dict, f, indent=4, ensure_ascii=False)
-
-
-            
-
-
- 
 
 class ProIMG():
 
@@ -98,9 +81,6 @@ class ProIMG():
             self.process_main(task['ui_path'], task['package_name'], regions_list)
             GenLableJson.write_lablejson(task['ui_path'], regions_list)
                 
-                
-
-        
     def process_main(self, ui_path, package_name, regions_list):
         nodes = []
         (root, img) = self.load_img_layout(ui_path)
@@ -121,30 +101,31 @@ class ProIMG():
             #self.dye_color(tuple(color_3[class_id]), white_img, node.getAttribute("bounds"))
             self.dye_color(self.color.get_color(class_id), white_img, node.getAttribute("bounds"))
             GenLableJson.get_regions_list(node.getAttribute("bounds"), class_id, descri, regions_list)
-        out_img = Image.fromarray(white_img)
-        out_img = out_img.convert("RGB")
-        out_img.save(os.path.join(DATASET_PATH, ui_path, OUT_IMG))
-        print("[DONE] " + ui_path + ' classify color')
 
-        
-        #随机染色
-        white_img[:][:][:] = 255
-        for node in nodes:
-            self.dye_color(self.color.get_color(random.randint(0,500)), white_img, node.getAttribute("bounds"))
-        out_img = Image.fromarray(white_img)
-        out_img = out_img.convert("RGB")
-        out_img.save(os.path.join(DATASET_PATH, ui_path, RAN_IMG))
-        print("[DONE] " + ui_path + ' random color')
+            out_img = Image.fromarray(white_img)
+            out_img = out_img.convert("RGB")
+            out_img.save(os.path.join(DATASET_PATH, ui_path, OUT_IMG))
+            print("[DONE] " + ui_path + ' classify color')
 
-        #一种颜色
-        white_img[:][:][:] = 255
-        for node in nodes:
-            self.dye_color(self.color.get_color(300), white_img, node.getAttribute("bounds"))
-        out_img = Image.fromarray(white_img)
-        out_img = out_img.convert("RGB")
-        out_img.save(os.path.join(DATASET_PATH, ui_path, ONE_IMG))
-        print("[DONE] " + ui_path + ' one color')
-        
+            
+            #随机染色
+            white_img[:][:][:] = 255
+            for node in nodes:
+                self.dye_color(self.color.get_color(random.randint(0,500)), white_img, node.getAttribute("bounds"))
+            out_img = Image.fromarray(white_img)
+            out_img = out_img.convert("RGB")
+            out_img.save(os.path.join(DATASET_PATH, ui_path, RAN_IMG))
+            print("[DONE] " + ui_path + ' random color')
+
+            #一种颜色
+            white_img[:][:][:] = 255
+            for node in nodes:
+                self.dye_color(self.color.get_color(300), white_img, node.getAttribute("bounds"))
+            out_img = Image.fromarray(white_img)
+            out_img = out_img.convert("RGB")
+            out_img.save(os.path.join(DATASET_PATH, ui_path, ONE_IMG))
+            print("[DONE] " + ui_path + ' one color')
+            
 
     def cmp_bound(self, node1, node2):
         location1 = node1.getAttribute("bounds")
@@ -176,12 +157,12 @@ class ProIMG():
         node_class = node.getAttribute("class")
         node_text = node.getAttribute("text")
 
-        # 1. 文字处理 不管控件类别, 直接读text属性 400~450
-        if node_text:
-            predict_class, descri = classifyTextFromNode(node, self.id)
-        # 2. 图片处理 只处理图片相关控件 class:100 image_default 图片类控件  0~100
-        elif True in [node_class.endswith(keyword) for keyword in id.widgetClassList["100"]]:
+        # 1. 图片处理 只处理图片相关控件 class:100 image_default 图片类控件  0~100
+        if True in [node_class.endswith(keyword) for keyword in id.widgetClassList["100"]]:
             predict_class, descri = classifyIconFromNode(img, node, self.id)
+        # 2. 文字处理 不管控件类别, 直接读text属性 400~450
+        elif node_text:
+            predict_class, descri = classifyTextFromNode(node, self.id)
         # 3. 控件处理 处理功能性控件 200~380 499
         else:
             predict_class, descri = classifyWidgetFromNode(node, self.id)
@@ -256,8 +237,8 @@ if __name__ == '__main__':
         p = ProIMG('pro_'+str(pro_id), package_list[pro_id*task_count: (pro_id+1)*task_count], id, color) if pro_id != process_count-1 else ProIMG('pro_'+str(pro_id), package_list[pro_id*task_count:], id, color)
         p.run()
     
-    for k, v in testallwidget.items():
-        testallwidget[k] = list(v)
+    # for k, v in testallwidget.items():
+    #     testallwidget[k] = list(v)
 
-    with open("./c.json", "w") as f:
-        json.dump(testallwidget, f, indent=4)
+    # with open("./widgets.json", "w") as f:
+    #     json.dump(testallwidget, f, indent=4)

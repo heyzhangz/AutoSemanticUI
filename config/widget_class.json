@@ -7,7 +7,7 @@
     "250" : ["CheckBox", "CheckedTextView"],
     "260" : ["DataPicker"],
     "270" : ["EditText", "SearchBoxView", "TextView", "AppCompatAutoCompleteTextView"],
-    "280" : ["ListView", "RecyclerView", "ListPopUpWindow", "TabItem", "GridView"],
+    "280" : ["ListView", "RecyclerView", "ListPopUpWindow", "TabItem", "GridView", "ViewPager", "HorizontalScrollView", "ScrollView"],
     "290" : ["MapView"],
     "300" : ["SlidingTab"],
     "310" : ["NumberPicker"],
@@ -16,6 +16,6 @@
     "340" : ["SeekBar"],
     "350" : ["Button"],
     "360" : ["ToolBar", "TitleBar", "ActionBar"],
-    "370" : ["VideoView", "VideoTextureView"],
+    "370" : ["VideoView", "VideoTextureView", "SurfaceRenderView"],
     "380" : ["WebView"]
 }
