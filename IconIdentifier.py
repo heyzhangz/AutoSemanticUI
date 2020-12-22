@@ -51,8 +51,9 @@ def isIcon(screenSize, grabbox):
     allPixel = screenSize[0] * screenSize[1]
     boxLength = grabbox[3] - grabbox[1]
     boxWidth = grabbox[2] - grabbox[0]
+    if boxLength <= 0 or boxWidth <= 0:
+        return False
     boxPixel = boxWidth * boxLength
-    
     aspectRatio = boxWidth / boxLength if boxWidth < boxLength else boxLength / boxWidth
     areaRatio = boxPixel / allPixel
 
